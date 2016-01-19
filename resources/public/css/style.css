@@ -1,2 +1,37 @@
+
 /* some style */
 
+.tiles-row
+{
+		overflow : hidden;
+		width : 2000px;
+}
+
+.tile
+{
+		width : 200px;
+		height : 200px;
+		float : left;
+}
+
+.title 
+{
+		color: #7c795d; 
+		font-family: 'Trocchi', serif; 
+		font-size: 55px; 
+		font-weight: normal; 
+		line-height: 48px; 
+		margin: 0;
+		text-align: center; 
+}
+
+
+.tile > .number
+{
+		color: #7c795d; 
+		font-family: 'Trocchi', serif; 
+		font-size: 45px; 
+		font-weight: normal; 
+		line-height: 48px; 
+		margin: 0;
+}

@@ -1,62 +1,91 @@
 (ns phogame.core
-  (:require [reagent.core :as reagent :refer [atom]]))
+  (:require [reagent.core :as reagent :refer [atom]]
+            [phogame.game :as game]))
 
 (enable-console-print!)
 
 (println "Edits to this text should show up in your developer console.")
 
-(defonce game-state (atom {:text "Welcome to Photogames... !"
-                           :img-src "images/shiv.jpg"
-                           :canvas {:id "canvas"}}))
+(defonce game-state (atom {}))
 
-(defn get-scaled-canvas [img width height]
-  (let [canvas (.createElement js/document "canvas")
-        context (.getContext canvas "2d")
-        img-width (.-width img)
-        img-height (.-height img)]
-    (do
-      (println "width and height " img-width img-height width height)
-      (.drawImage context img 0 0 width height)
-      canvas)))
+(def init-state {:text "Welcome to Photogames... !"
+                 :state game/init-state
+                 :user {:tries 0}
+                 :done false
+                 })
 
-(defn load-image [img-path]
-  (let [img (js/Image.)]
-    (do (set! (.-src img) img-path)
-        img)))
+(defn tile-com [tile]
+  [:div.tile 
+   [:div.number (:num tile)]])
 
-(defn add-img-canvas [img-path width height]
-  (let [img (load-image img-path)]
-    (set! (.-onload img) 
-          (fn []
-            (let [canvas (get-scaled-canvas img width height)]
-              (do (println "here is canvas : " canvas)
-                  (swap! game-state (fn [gs c] (assoc @gs :canvas c)) canvas)))))))
+(defn tiles-com [tiles]
+  (into [:div.tiles-row ] (map tile-com tiles)))
 
-(defn hello-world []
-  (let [count (atom 1)]
-    (fn []
-      [:div 
-       [:h1 (:text @game-state)]
-       [:div (do (swap! count inc) (str "count is " @count))]
-       [:canvas (:canvas @game-state)]])))
-
-(reagent/render-component [hello-world]
-                          (. js/document (getElementById "app")))
+(defn game-app 
+  []
+  [:div
+   [:div.title (:text @game-state)]
+   (into [:div ] (map tiles-com (:state @game-state)))])
 
 (defn on-js-reload []
-  ;; optionally touch your app-state to force rerendering depending on
-  ;; your application
-  ;; (swap! app-state update-in [:__figwheel_counter] inc)
-)
+  (do 
+    (println "Reloaded...")
+    (reset! game-state init-state)))
 
-(set! (.-onload js/document) 
-      (fn []
-        (add-img-canvas (:img-src @game-state) 100 130)))
+(def codename
+  {37 "LEFT"
+   38 "UP"
+   39 "RIGHT"
+   40 "DOWN"})
 
-;;(. js/document onload)
+(def action
+  {"LEFT" game/move-left
+   "RIGHT" game/move-right
+   "UP" game/move-up
+   "DOWN" game/move-down})
 
-;;(def img (load-image (:img-src @game-state)))
+(defn handle-keydown [e]
+  (when-not (:done @game-state)
+    (when-let [f (action (codename (.-keyCode e)))]
+      (do (.preventDefault e)
+          (let [curr-state (:state @game-state)
+                new-state (f curr-state)
+                done (game/is-done? new-state)]
+            (if done
+              (swap! game-state update-in [:done] true))
+            (if (= new-state curr-state)
+              (;; make an error sound
+               )
+              (swap! game-state (fn [gs]
+                                  (assoc gs :state new-state)))))))))
+
+(defn init []
+  (do
+    (on-js-reload)
+    (.addEventListener js/document "keydown" handle-keydown)
+    (reagent/render-component [game-app]
+                          (. js/document (getElementById "app")))))
+
+(defonce start
+  (init))
+
+;; Game is a [4 X 4] grid of images.
+;; Each image would have a number.
+;; Images would be randomly assigned a place.
+;; Their would be one empty slot which would not have any image.
+;; This spot can be swaped with another image from any of its four
+;; corners. This would be the only way to move the images.
+;; Game ends when all 16 images are at their respective slot.  
+
+;; Take input from user.
+;; Test if valid-move.
+;; Make the change in game-state for valid move.
+;; Check if game is over. If yes.. congratulate,
+;; Otherwise continue.
+
+;; Change other game theory goodies like time and tries.
+
+;; load photos from server.
 
 
-;;(def canvas1 (get-scaled-canvas img 100 130))
 
