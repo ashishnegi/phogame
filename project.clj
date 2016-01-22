@@ -28,8 +28,11 @@
   :uberjar-name "phogame-standalone.jar"
   
   :source-paths ["src/clj"]
+  :test-paths ["test/clj"]
   
-  :ring {:handler phogame.core/server}
+  :ring {:handler phogame.core/ring-app
+         :nrel {:start? true
+                :port 9998}}
 
   :profiles {:production
              {:env {:production true}}             

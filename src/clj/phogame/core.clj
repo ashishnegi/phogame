@@ -16,7 +16,7 @@
         :headers {"Content-Type" "text/plain"}
         :body (pr-str ["Hello"])})
   (ANY "*" []
-       (route/not-found (slurp (io/resource "404.html")))))
+       (route/not-found (slurp (io/resource "public/404.html")))))
 
 (defn wrap-error-page [handler]
   (fn [req]
@@ -24,7 +24,7 @@
          (catch Exception e
            {:status 500
             :headers {"Content-Type" "text/html"}
-            :body (slurp (io/resource "500.html"))}))))
+            :body (slurp (io/resource "public/500.html"))}))))
 
 (defn wrap-app [app]
   ;; TODO: heroku config:add SESSION_SECRET=$RANDOM_16_CHARS
@@ -41,6 +41,5 @@
         (jetty/run-jetty (wrap-app #'app) {:port port :join? false}))))
 
 ;; For interactive development:
-;; (.stop server)
-;; (def server (-main))
+(def ring-app app)
 
