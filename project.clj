@@ -4,46 +4,64 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :dependencies [[org.clojure/clojure "1.7.0"]]
+  :dependencies [[org.clojure/clojure "1.7.0"]
+                 [org.clojure/clojurescript "1.7.170"]
+                 [org.clojure/core.async "0.2.374"]
+                 [reagent "0.5.0"]
 
-  :plugins [[lein-cljsbuild "1.1.1"]
-            [lein-figwheel "0.5.0-3"]]
-  ;;:source-paths ["src"]
+                 [compojure "1.4.0"]
+                 [ring/ring-defaults "0.1.5"]
+                 [ring/ring-jetty-adapter "1.2.2"]
+                 [ring/ring-devel "1.2.2"]
+                 [ring-basic-authentication "1.0.5"]
+                 [environ "0.5.0"]]
+
+  :min-lein-version "2.0.0"
   
-  :clj {
-        :source-paths ["src/clj"]
-        :test-paths ["test/clj"]}
+  :plugins [[lein-cljsbuild "1.1.1"]
+            [lein-figwheel "0.5.0-3"]
+            [lein-ring "0.9.7"]
+            [environ/environ.lein "0.2.1"]]
 
-  :cljs {
-         :dependencies [[org.clojure/clojurescript "1.7.170"]
-                        [org.clojure/core.async "0.2.374"]
-                        [reagent "0.5.0"]
-                        [org.clojure/core.typed "0.3.18"]]
+  :hooks [environ.leiningen.hooks]
 
-         
-         :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
-       
-         :cljsbuild {:builds
-                     [{:id "dev"
-                       :source-paths ["src/cljs"]
+  :uberjar-name "phogame-standalone.jar"
+  
+  :source-paths ["src/clj"]
+  
+  :ring {:handler phogame.core/server}
 
-                       :figwheel {:on-jsload "phogame.core/on-js-reload"}
+  :profiles {:production
+             {:env {:production true}}             
 
-                       :compiler {:main phogame.core
-                                  :asset-path "js/compiled/out"
-                                  :output-to "resources/public/js/compiled/phogame.js"
-                                  :output-dir "resources/public/js/compiled/out"
-                                  :source-map-timestamp true
-                                  :source-map true}}
-                      ;; This next build is an compressed minified build for
-                      ;; production. You can build this with:
-                      ;; lein cljsbuild once min
-                      {:id "min"
-                       :source-paths ["src/cljs"]
-                       :compiler {:output-to "resources/public/js/compiled/phogame.js"
-                                  :main phogame.core
-                                  :optimizations :advanced
-                                  :pretty-print false}}]}}
+             :dev
+             {:dependencies [[javax.servlet/servlet-api "2.5"]
+                             [ring/ring-mock "0.3.0"]]
+              :env {:production false}}}
+
+  :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
+
+  :cljsbuild {:builds
+              [{:id "dev"
+                :source-paths ["src/cljs"]
+
+                :figwheel {:on-jsload "phogame.core/on-js-reload"}
+
+                :compiler {:main phogame.core
+                           :asset-path "js/compiled/out"
+                           :output-to "resources/public/js/compiled/phogame.js"
+                           :output-dir "resources/public/js/compiled/out"
+                           :source-map-timestamp true
+                           :source-map true}}
+               ;; This next build is an compressed minified build for
+               ;; production. You can build this with:
+               ;; lein cljsbuild once min
+               {:id "min"
+                :source-paths ["src/cljs"]
+                :compiler {:output-to "resources/public/js/compiled/phogame.js"
+                           :main phogame.core
+                           :optimizations :advanced
+                           :pretty-print false}}]}
 
   :figwheel {;; :http-server-root "public" ;; default and assumes "resources"
              ;; :server-port 3449 ;; default
