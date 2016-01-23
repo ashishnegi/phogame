@@ -16,18 +16,18 @@
 
 (def game-init-state (make-game game/init-state))
 
-(def init-state {:text "Welcome to Photogames... !"
+(def init-state {:text "In memory lanes..."
                  :state game-init-state
                  :user {:tries 0}
                  :done false
+                 :hidden-tile-num true
                  })
 
 (defn tile-com [tile]
   [:div.tile 
-   [:div.number {:hidden true} (:num tile)]
+   [:div.number {:hidden (:hidden-tile-num @game-state)} (:num tile)]
    [:div
-    [:img {:src (:img-src tile) :width "200px" :height "200px"}]
-    ]])
+    [:img {:src (:img-src tile) :width "200px" :height "200px" :hidden (not (:hidden-tile-num @game-state))}]]])
 
 (defn tiles-com [tiles]
   (into [:div.tiles-row ] (map tile-com tiles)))
@@ -36,7 +36,12 @@
   []
   [:div
    [:div.title (:text @game-state)]
-   (into [:div ] (map tiles-com (:state @game-state)))])
+   (into [:div ] (map tiles-com (:state @game-state)))
+   [:div
+    [:div.clock "Time : "]
+    [:button.tips 
+     {:on-click #(swap! 
+                  game-state update-in [:hidden-tile-num] not)} "Tips"]]])
 
 (defn on-js-reload []
   (do 
