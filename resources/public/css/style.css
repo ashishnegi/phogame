@@ -35,3 +35,9 @@
 		line-height: 48px; 
 		margin: 0;
 }
+
+.tile > .image 
+{
+		width : 200px;
+		height : 200px;
+}

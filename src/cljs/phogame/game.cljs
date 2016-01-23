@@ -22,9 +22,12 @@
     (make-tile num :cursor) ;; cursor is empty box.
     (make-tile num :tile))) ;; other tiles having images/number are tiles.
 
+(defn apply-fn [state fn]
+  (vec (map vec (partition ntiles-row
+                          (map fn (flatten state))))))
+
 ;; initial game state.
-(def init-state (vec (map vec (partition ntiles-row 
-                                         (map make-game-tile (flatten init-pos))))))
+(def init-state (apply-fn init-pos make-game-tile))
 
 (defn is-cursor? [tile]
   (= :cursor (:type tile)))

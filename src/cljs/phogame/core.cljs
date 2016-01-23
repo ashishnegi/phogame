@@ -8,15 +8,26 @@
 
 (defonce game-state (atom {}))
 
+(defn add-img [tile]
+  (assoc tile :img-src (clojure.string/join "" ["images/chunk" (:num tile) ".jpg"])))
+
+(defn make-game [state]
+  (game/apply-fn state add-img))
+
+(def game-init-state (make-game game/init-state))
+
 (def init-state {:text "Welcome to Photogames... !"
-                 :state game/init-state
+                 :state game-init-state
                  :user {:tries 0}
                  :done false
                  })
 
 (defn tile-com [tile]
   [:div.tile 
-   [:div.number (:num tile)]])
+   [:div.number {:hidden true} (:num tile)]
+   [:div
+    [:img {:src (:img-src tile) :width "200px" :height "200px"}]
+    ]])
 
 (defn tiles-com [tiles]
   (into [:div.tiles-row ] (map tile-com tiles)))
@@ -49,15 +60,17 @@
     (when-let [f (action (codename (.-keyCode e)))]
       (do (.preventDefault e)
           (let [curr-state (:state @game-state)
-                new-state (f curr-state)
+                new-state (make-game (f curr-state))
                 done (game/is-done? new-state)]
-            (if done
-              (swap! game-state update-in [:done] true))
-            (if (= new-state curr-state)
-              (;; make an error sound
-               )
-              (swap! game-state (fn [gs]
-                                  (assoc gs :state new-state)))))))))
+            (do 
+              (println new-state)
+              (if done
+                (swap! game-state update-in [:done] true))
+              (if (= new-state curr-state)
+                (;; make an error sound
+                 )
+                (swap! game-state (fn [gs]
+                                    (assoc gs :state new-state))))))))))
 
 (defn init []
   (do
