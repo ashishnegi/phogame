@@ -2,19 +2,21 @@
   (:require [compojure.core :refer [defroutes GET PUT POST DELETE ANY]]
             [compojure.handler :refer [site]]
             [compojure.route :as route]
+
             [clojure.java.io :as io]
+
             [ring.middleware.stacktrace :as trace]
             [ring.middleware.session :as session]
             [ring.middleware.session.cookie :as cookie]
             [ring.adapter.jetty :as jetty]
             [ring.middleware.basic-authentication :as basic]
+            [ring.util.response :as response]
+
             [environ.core :refer [env]]))
 
 (defroutes app
   (GET "/" []
-       {:status 200
-        :headers {"Content-Type" "text/plain"}
-        :body (pr-str ["Hello"])})
+       (response/resource-response "index.html" {:root "public"}))
 
   ;; Give all resources.
   (route/resources "/")

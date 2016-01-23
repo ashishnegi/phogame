@@ -87,5 +87,3 @@
 
 ;; load photos from server.
 
-
-
