@@ -15,6 +15,11 @@
        {:status 200
         :headers {"Content-Type" "text/plain"}
         :body (pr-str ["Hello"])})
+
+  ;; Give all resources.
+  (route/resources "/")
+
+  ;; Give 404 for others.
   (ANY "*" []
        (route/not-found (slurp (io/resource "public/404.html")))))
 
@@ -41,5 +46,5 @@
         (jetty/run-jetty (wrap-app #'app) {:port port :join? false}))))
 
 ;; For interactive development:
-(def ring-app app)
+(def ring-app (wrap-app #'app))
 
