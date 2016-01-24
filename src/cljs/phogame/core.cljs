@@ -19,16 +19,26 @@
 (def init-state {:text "In memory lanes..."
                  :state game-init-state
                  :user {:tries 0}
-                 :done false
+                 :progress :start
                  :hidden-tile-num true
+                 :timer 0
                  })
 
+(defn game-finished [state]
+  (= (:progress state) :done))
+
+(defonce timer-update (js/setInterval (fn []
+                                       (swap! game-state 
+                                              update-in
+                                              [:timer]
+                                              inc)) 
+                                     1000))
 (defn tile-com [tile]
   [:div.tile 
    [:div.number {:hidden (:hidden-tile-num @game-state)} (:num tile)]
    [:img {:src (:img-src tile) 
-          :width "100px" 
-          :height "100px" 
+          :width "200px" 
+          :height "200px" 
           :hidden (not (:hidden-tile-num @game-state))
           :class (if (= (:type tile) :cursor)
                    "cursor-tile"
@@ -43,7 +53,7 @@
    [:div.title (:text @game-state)]
    (into [:div ] (map tiles-com (:state @game-state)))
    [:div
-    [:div.clock "Time : "]
+    [:div.clock (clojure.string/join "" ["Time : " (:timer @game-state)])]
     [:button.tips 
      {:on-click #(swap! 
                   game-state update-in [:hidden-tile-num] not)} "Tips"]]])
@@ -66,7 +76,7 @@
    "DOWN" game/move-down})
 
 (defn handle-keydown [e]
-  (when-not (:done @game-state)
+  (when-not (game-finished @game-state)
     (when-let [f (action (codename (.-keyCode e)))]
       (do (.preventDefault e)
           (let [curr-state (:state @game-state)
@@ -75,7 +85,7 @@
             (do 
               (println new-state)
               (if done
-                (swap! game-state update-in [:done] true))
+                (swap! game-state update-in [:progress] :done))
               (if (= new-state curr-state)
                 (;; make an error sound
                  )
@@ -87,7 +97,7 @@
     (on-js-reload)
     (.addEventListener js/document "keydown" handle-keydown)
     (reagent/render-component [game-app]
-                          (. js/document (getElementById "app")))))
+                              (. js/document (getElementById "app")))))
 
 (defonce start
   (init))
