@@ -7,10 +7,20 @@
 		width : 2000px;
 }
 
-.tile
+.normal-tile
 {
 		width : 200px;
 		height : 200px;
+		float : left;
+}
+
+.cursor-tile
+{
+		width : 199px;
+		height : 198px;
+		border : solid;
+		border-width : 1px;
+		border-color: red;
 		float : left;
 }
 
@@ -36,8 +46,8 @@
 		margin: 0;
 }
 
-.tile > .image 
+.tile > .cursor
 {
-		width : 200px;
-		height : 200px;
+		
 }
+

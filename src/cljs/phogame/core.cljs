@@ -26,8 +26,13 @@
 (defn tile-com [tile]
   [:div.tile 
    [:div.number {:hidden (:hidden-tile-num @game-state)} (:num tile)]
-   [:div
-    [:img {:src (:img-src tile) :width "200px" :height "200px" :hidden (not (:hidden-tile-num @game-state))}]]])
+   [:img {:src (:img-src tile) 
+          :width "100px" 
+          :height "100px" 
+          :hidden (not (:hidden-tile-num @game-state))
+          :class (if (= (:type tile) :cursor)
+                   "cursor-tile"
+                   "normal-tile")}]])
 
 (defn tiles-com [tiles]
   (into [:div.tiles-row ] (map tile-com tiles)))
