@@ -9,7 +9,9 @@
 (defonce game-state (atom {}))
 
 (defn add-img [tile]
-  (assoc tile :img-src (clojure.string/join "" ["images/chunk" (:num tile) ".jpg"])))
+  (assoc tile 
+         :img-src 
+         (clojure.string/join "" ["images/chunk" (:num tile) ".jpg"])))
 
 (defn make-game [state]
   (game/apply-fn state add-img))
@@ -85,10 +87,11 @@
             (do 
               (println new-state)
               (if done
-                (swap! game-state update-in [:progress] :done))
+                (do
+                  (js/alert "Great.. you did it.")
+                  (swap! game-state update-in [:progress] (fn [x] :done))))
               (if (= new-state curr-state)
-                (;; make an error sound
-                 )
+                (js/alert "not right move.")
                 (swap! game-state (fn [gs]
                                     (assoc gs :state new-state))))))))))
 
