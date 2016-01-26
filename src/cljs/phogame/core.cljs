@@ -24,7 +24,11 @@
                  :progress :start
                  :hidden-tile-num true
                  :timer 0
+                 :user-name "" 
                  })
+
+(defn update-game [key val]
+  (swap! game-state update-in [key] #(identity val)))
 
 (defn game-finished [state]
   (= (:progress state) :done))
@@ -49,16 +53,42 @@
 (defn tiles-com [tiles]
   (into [:div.tiles-row ] (map tile-com tiles)))
 
+(defn get-val [event]
+  (-> event .-target .-value))
+
+(defn show-hide-elem [id show]
+  (if-let [div (.getElementById js/document id)]
+    (set! (-> div .-style .-display) (if show "block" "none"))))
+
+(defn show-game []
+  (show-hide-elem "game-play" true))
+
+(defn hide-intro []
+  (show-hide-elem "game-intro" false))
+
+(defn is-enter? [event]
+  (if-let [code (-> event .-key)]
+    (= code "Enter")
+    false))
+
 (defn game-app 
   []
   [:div
-   [:div.title (:text @game-state)]
-   (into [:div ] (map tiles-com (:state @game-state)))
-   [:div
-    [:div.clock (clojure.string/join "" ["Time : " (:timer @game-state)])]
-    [:button.tips 
-     {:on-click #(swap! 
-                  game-state update-in [:hidden-tile-num] not)} "Tips"]]])
+   [:div.intro {:id "game-intro"}
+    [:input.name {:field :text
+                  :on-key-press #(if (and (is-enter? %) (> (count (get-val %)) 0))
+                                (do
+                                  (hide-intro)
+                                  (update-game :user-name (get-val %))
+                                  (show-game)))}]]
+   [:div.game {:hidden true :id "game-play"}
+    [:div.title (:text @game-state)]
+    (into [:div ] (map tiles-com (:state @game-state)))
+    [:div
+     [:div.clock (clojure.string/join "" ["Time : " (:timer @game-state)])]
+     [:button.tips 
+      {:on-click #(swap! 
+                   game-state update-in [:hidden-tile-num] not)} "Hint."]]]])
 
 (defn on-js-reload []
   (do 
@@ -77,6 +107,12 @@
    "UP" game/move-up
    "DOWN" game/move-down})
 
+(defn game-done [new-state]
+  (do
+    (js/alert "Great.. you did it.")
+    (update-game :state new-state)
+    (update-game :progress :done)))
+
 (defn handle-keydown [e]
   (when-not (game-finished @game-state)
     (when-let [f (action (codename (.-keyCode e)))]
@@ -87,13 +123,10 @@
             (do 
               (println new-state)
               (if done
-                (do
-                  (js/alert "Great.. you did it.")
-                  (swap! game-state update-in [:progress] (fn [x] :done))))
-              (if (= new-state curr-state)
-                (js/alert "not right move.")
-                (swap! game-state (fn [gs]
-                                    (assoc gs :state new-state))))))))))
+                (game-done new-state)
+                (if (= new-state curr-state)
+                  (js/alert "not right move.")
+                  (update-game :state new-state)))))))))
 
 (defn init []
   (do
