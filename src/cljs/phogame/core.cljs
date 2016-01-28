@@ -33,12 +33,16 @@
 (defn game-finished [state]
   (= (:progress state) :done))
 
-(defonce timer-update (js/setInterval (fn []
-                                       (swap! game-state 
-                                              update-in
-                                              [:timer]
-                                              inc)) 
-                                     1000))
+(defn inc-time []
+  (swap! game-state 
+         update-in
+         [:timer]
+         inc))
+
+(defn timer-start [] (js/setInterval inc-time 1000))
+
+(defonce timer-update (timer-start))
+
 (defn tile-com [tile]
   [:div.tile 
    [:div.number {:hidden (:hidden-tile-num @game-state)} (:num tile)]
@@ -75,16 +79,19 @@
   []
   [:div
    [:div.intro {:id "game-intro"}
-    [:input.name {:field :text
-                  :on-key-press #(if (and (is-enter? %) (> (count (get-val %)) 0))
-                                (do
-                                  (hide-intro)
-                                  (update-game :user-name (get-val %))
-                                  (show-game)))}]]
+    [:div.welcome-msg "I would like to remember you. Your name, please."]
+    [:div.name
+     [:input {:type "text"
+              :placeholder "your name"
+              :on-key-press #(if (and (is-enter? %) (> (count (get-val %)) 0))
+                               (do
+                                 (hide-intro)
+                                 (update-game :user-name (get-val %))
+                                 (show-game)))}]]]
    [:div.game {:hidden true :id "game-play"}
     [:div.title (:text @game-state)]
-    (into [:div ] (map tiles-com (:state @game-state)))
-    [:div
+    (into [:div.pictures ] (map tiles-com (:state @game-state)))
+    [:div.footer
      [:div.clock (clojure.string/join "" ["Time : " (:timer @game-state)])]
      [:button.tips 
       {:on-click #(swap! 
@@ -93,7 +100,9 @@
 (defn on-js-reload []
   (do 
     (println "Reloaded...")
-    (reset! game-state init-state)))
+    (reset! game-state init-state)
+    (reagent/render-component [game-app]
+                              (. js/document (getElementById "app")))))
 
 (def codename
   {37 "LEFT"
@@ -109,9 +118,10 @@
 
 (defn game-done [new-state]
   (do
-    (js/alert "Great.. you did it.")
+    (js/clearInterval timer-update)
     (update-game :state new-state)
-    (update-game :progress :done)))
+    (update-game :progress :done)
+    (js/alert "Great.. you did it.")))
 
 (defn handle-keydown [e]
   (when-not (game-finished @game-state)
