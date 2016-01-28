@@ -1,6 +1,14 @@
 
 /* some style */
 
+html, body { height : 100%; }
+body > #app
+{
+    height : 93%;
+    overflow : none;
+    min-height : 80%;
+}
+
 .tiles-row
 {
 		clear:both;		
@@ -32,15 +40,18 @@
 		line-height: 48px; 
 		margin: 0;
 		text-align: center;
-    margin-bottom : 4%;
-    margin-top : 5%;
+    margin-bottom : 2%;
+    margin-top : 2%;
 }
 
 .pictures
 {
-    position:absolute;
     left : 50%;
+    position : relative;
     margin-left : -400px;
+    margin-bottom : 4%;
+    height : 605px;
+    width : 810px;
 }
 
 .tile > .number
@@ -85,10 +96,24 @@
 
 .footer
 {
-    display:block;
+    z-index : 10;
+    position : relative;
+    height : 20px;
+    padding-left : 40%;
+    font-family: Satisfy, cursive;
 }
 
-.clock
+.left-container
 {
-    
+    float:left;
+}
+
+.right-container
+{
+    float:right;
+}
+
+.container
+{
+    padding-bottom: 3em;
 }

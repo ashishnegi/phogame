@@ -77,7 +77,7 @@
 
 (defn game-app 
   []
-  [:div
+  [:div.container
    [:div.intro {:id "game-intro"}
     [:div.welcome-msg "I would like to remember you. Your name, please."]
     [:div.name
@@ -90,12 +90,15 @@
                                  (show-game)))}]]]
    [:div.game {:hidden true :id "game-play"}
     [:div.title (:text @game-state)]
-    (into [:div.pictures ] (map tiles-com (:state @game-state)))
-    [:div.footer
-     [:div.clock (clojure.string/join "" ["Time : " (:timer @game-state)])]
-     [:button.tips 
-      {:on-click #(swap! 
-                   game-state update-in [:hidden-tile-num] not)} "Hint."]]]])
+    [:div.contents
+     [:div.left-container
+      [:div.clock (clojure.string/join "" ["Time : " (:timer @game-state)])]]
+     [:div.center-container
+      (into [:div.pictures ] (map tiles-com (:state @game-state)))]
+     [:div.right-container
+      [:button.tips 
+       {:on-click #(swap! 
+                    game-state update-in [:hidden-tile-num] not)} "Hint."]]]]])
 
 (defn on-js-reload []
   (do 
