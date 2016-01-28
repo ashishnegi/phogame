@@ -18,7 +18,7 @@
 
 (def game-init-state (make-game game/init-state))
 
-(def init-state {:text "In memory lanes..."
+(def init-state {:text "Uhh"  #_"In memory lanes..."
                  :state game-init-state
                  :user {:tries 0}
                  :progress :start
@@ -96,9 +96,9 @@
      [:div.center-container
       (into [:div.pictures ] (map tiles-com (:state @game-state)))]
      [:div.right-container
-      [:button.tips 
-       {:on-click #(swap! 
-                    game-state update-in [:hidden-tile-num] not)} "Hint."]]]]])
+      [:button
+       {:on-click #(swap! game-state update-in [:hidden-tile-num] not)
+        :class "action-button shadow animate green"} "Hint."]]]]])
 
 (defn on-js-reload []
   (do 
