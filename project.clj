@@ -61,7 +61,7 @@
                ;; lein cljsbuild once min
                {:id "min"
                 :source-paths ["src/cljs"]
-                :compiler {:output-to "resources/public/js/compiled/phogame.js"
+                :compiler {:output-to "resources/public/js/compiled/phogame.min.js"
                            :main phogame.core
                            :optimizations :advanced
                            :pretty-print false}}]}

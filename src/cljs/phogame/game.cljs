@@ -8,16 +8,20 @@
   (Tile. num type))
 
 ;; initial position of the tiles.
-;; (def init-pos [[2 3]
-;;                [1 4]])
+;; (def init-pos [[1 2 3]
+;;                [4 6 5]])
 
-(def init-pos [[2 4 1 6]
-               [9 8 3 5]
-               [7 11 10 12]])
+;; (def init-pos [[2 4 1 6]
+;;                [9 8 3 5]
+;;                [7 11 10 12]])
+
+(def init-pos [[2 3 5]
+               [1 8 4]
+               [7 9 6]])
 
 ;; num of tiles in a row/col.
 (def ntiles-row 3)
-(def ntiles-col 4)
+(def ntiles-col 3)
 (def ntiles (* ntiles-row ntiles-col))
 
 (defn make-game-tile [num]
@@ -27,7 +31,7 @@
 
 (defn apply-fn [state fn]
   (vec (map vec (partition ntiles-col
-                          (map fn (flatten state))))))
+                           (map fn (flatten state))))))
 
 ;; initial game state.
 (def init-state (apply-fn init-pos make-game-tile))
@@ -62,8 +66,8 @@
 (defn cursor-pos [game]
   (if-let [pos-val (first (filter (fn [[_ x]] (is-cursor? x)) (map-indexed vector (flatten game))))]
     (let [pos (first pos-val)
-          row (int (/ pos ntiles-row))
-          col (int (- pos (* row ntiles-row)))]
+          row (int (/ pos ntiles-col))
+          col (int (- pos (* row ntiles-col)))]
       (Position. row col))))
 
 (defn val-game [game row col]
@@ -82,9 +86,11 @@
           next-row (row-fn row)
           next-col (col-fn col)
           val-above (val-game game next-row next-col)]
-      (-> game
-          (update-in [row col] (fn [_ val] (make-game-tile val)) val-above)
-          (update-in [next-row next-col] (fn [x] (make-cursor-tile)))))
+      (if (and (>= next-row 0) (>= next-col 0) (< next-row ntiles-row) (< next-col ntiles-col))
+        (-> game
+            (update-in [row col] (fn [_ val] (make-game-tile val)) val-above)
+            (update-in [next-row next-col] (fn [x] (make-cursor-tile))))
+        game))
     game))
 
 (defn move-up 
@@ -108,9 +114,11 @@
   (move-cursor game can-move-right? identity inc))
 
 (defn is-done? [game]
-  (empty?
-   (filter (fn [[i {num :num}]]
-             (not (= (inc i) num)))
-           (map-indexed vector (flatten game)))))
+  (if (empty? game)
+    (println "Error")
+    (empty?
+     (filter (fn [[i {num :num}]]
+               (not (= (inc i) num)))
+             (map-indexed vector (flatten game))))))
 
 

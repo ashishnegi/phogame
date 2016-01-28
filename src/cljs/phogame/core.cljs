@@ -18,7 +18,7 @@
 
 (def game-init-state (make-game game/init-state))
 
-(def init-state {:text "In memory lanes..."
+(def init-state {:text "In memory lanes, a sliding puzzle game..."
                  :state game-init-state
                  :user {:tries 0}
                  :progress :start
@@ -40,7 +40,7 @@
            update-in
            [:timer]
            inc)
-    (let [time (:timer @game-state)
+    (let [time (mod (:timer @game-state) 600)
           f (fn [x] (update-game :encourage-msg x))
           u-n (:user-name @game-state)]
       (cond
