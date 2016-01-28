@@ -1,5 +1,5 @@
 (defproject phogame "0.1.0-SNAPSHOT"
-  :description "FIXME: write this!"
+  :description "Simple photo sliding puzzle game for friends!!!"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
@@ -25,14 +25,14 @@
 
   :hooks [environ.leiningen.hooks]
 
-  :uberjar-name "phogame-standalone.jar"
-  
   :source-paths ["src/clj"]
   :test-paths ["test/clj"]
   
   :ring {:handler phogame.core/ring-app
          :nrel {:start? true
                 :port 9998}}
+
+  :uberjar-name "phogame-standalone.jar"
 
   :profiles {:production
              {:env {:production true}}             
@@ -63,6 +63,8 @@
                 :source-paths ["src/cljs"]
                 :compiler {:output-to "resources/public/js/compiled/phogame.min.js"
                            :main phogame.core
+                           :asset-path "js/compiled/out"
+                           :output-dir "resources/public/js/compiled/"
                            :optimizations :advanced
                            :pretty-print false}}]}
 

@@ -35,7 +35,8 @@
 
 (defn wrap-app [app]
   ;; TODO: heroku config:add SESSION_SECRET=$RANDOM_16_CHARS
-  (let [store (cookie/cookie-store {:key (env :session-secret)})]
+  (let [store (cookie/cookie-store {:key (or (env :session-secret)
+                                             "ADF2348e3347hdf6")})]
     (-> app
         ((if (env :production)
            wrap-error-page
