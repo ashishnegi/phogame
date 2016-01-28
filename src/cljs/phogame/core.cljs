@@ -92,7 +92,8 @@
     [:div.title (:text @game-state)]
     [:div.contents
      [:div.left-container
-      [:div.clock (clojure.string/join "" ["Time : " (:timer @game-state)])]]
+      [:div.clock (clojure.string/join "" [(:timer @game-state)])]
+      [:div.secs "secs"]]
      [:div.center-container
       (into [:div.pictures ] (map tiles-com (:state @game-state)))]
      [:div.right-container

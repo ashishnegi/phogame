@@ -50,7 +50,7 @@ body > #app
       left : 50%;
       margin-left : -400px;
       */
-    padding-left : 450px;
+    padding : 0px 200px 0px 200px;
     position : relative;
     margin-bottom : 4%;
     height : 605px;
@@ -108,15 +108,17 @@ body > #app
 
 .left-container
 {
+    font: bold 34px "Century Schoolbook", Georgia, Times, serif;
     float:left;
+    padding-left: 200px;
+    padding-top: 15%;
 }
 
 .right-container
 {
-    padding-right: 200px;
     width: 200px;
     height: 300px;
-    float: right;
+    float: left;
     padding-top: 15%;
 }
 
@@ -184,3 +186,7 @@ body > #app
 	border-bottom: 1px solid;
 }
 
+.clock
+{
+    
+}
