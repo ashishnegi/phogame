@@ -18,13 +18,14 @@
 
 (def game-init-state (make-game game/init-state))
 
-(def init-state {:text "Uhh"  #_"In memory lanes..."
+(def init-state {:text "In memory lanes..."
                  :state game-init-state
                  :user {:tries 0}
                  :progress :start
                  :hidden-tile-num true
                  :timer 0
                  :user-name "" 
+                 :encourage-msg ""
                  })
 
 (defn update-game [key val]
@@ -34,10 +35,24 @@
   (= (:progress state) :done))
 
 (defn inc-time []
-  (swap! game-state 
-         update-in
-         [:timer]
-         inc))
+  (do
+    (swap! game-state 
+           update-in
+           [:timer]
+           inc)
+    (let [time (:timer @game-state)
+          f (fn [x] (update-game :encourage-msg x))
+          u-n (:user-name @game-state)]
+      (cond
+        (< time 8) (f "Go.. Go. Go..")
+        (< time 15) (f "Press arrow keys faster..")
+        (< time 28) (f (str "Remember " u-n ".. If you have a dream, don't wait. Act."))
+        (< time 50) (f "We all make choices, but in the end our choices make us.")
+        (< time 75) (f "There is no shortcut to perfection... Hard traning is the only way.")
+        (< time 120) (f "Maybe we'd fall short. Maybe we'd never even come close. But someone, someday, would know we'd tried.")
+        (< time 180) (f (str u-n ".. your actions have meaning only if they hold true to your ideals."))
+        (< time 300) (f "You don't need a reason to play this game.. again.")
+        (< time 600) (f (str "You can always refresh to restart the game.. Meet you again.. " u-n))))))
 
 (defn timer-start [] (js/setInterval inc-time 1000))
 
@@ -93,7 +108,8 @@
     [:div.contents
      [:div.left-container
       [:div.clock (clojure.string/join "" [(:timer @game-state)])]
-      [:div.secs "secs"]]
+      [:div.secs "secs"]
+      [:div.encourage-msg (:encourage-msg @game-state)]]
      [:div.center-container
       (into [:div.pictures ] (map tiles-com (:state @game-state)))]
      [:div.right-container
