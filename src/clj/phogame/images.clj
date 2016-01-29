@@ -28,7 +28,7 @@
                                 height-chunk)
                                (javax.imageio.ImageIO/write "jpg" chunk-file-rc))))))))))
 
-;; (div-images 
-;;  "C:/Users/asnegi/mystuff/clojure/proj/phogame/resources/public/images/shiv.jpg" 
-;;  4 3 
-;;  "C:/Users/asnegi/mystuff/clojure/proj/phogame/resources/public/images/chunk")
+(div-images 
+ "C:/Users/asnegi/mystuff/clojure/proj/phogame/resources/public/images/main.jpg" 
+ 4 3 
+ "C:/Users/asnegi/mystuff/clojure/proj/phogame/resources/public/images/chunk")
