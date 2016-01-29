@@ -26,6 +26,7 @@
                  :timer 0
                  :user-name "" 
                  :encourage-msg ""
+                 :background-img ""
                  })
 
 (defn update-game [key val]
@@ -103,7 +104,9 @@
                                  (hide-intro)
                                  (update-game :user-name (get-val %))
                                  (show-game)))}]]]
-   [:div.game {:hidden true :id "game-play"}
+   [:div.game {:hidden true
+               :id "game-play"
+               :background-image (:background-img @game-state)}
     [:div.title (:text @game-state)]
     [:div.contents
      [:div.left-container
@@ -141,6 +144,7 @@
     (js/clearInterval timer-update)
     (update-game :state new-state)
     (update-game :progress :done)
+    (set! (-> js/document .-body .-style .-backgroundImage) "url('/images/main.jpg')")
     (js/alert "Great.. you did it.")))
 
 (defn handle-keydown [e]

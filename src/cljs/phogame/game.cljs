@@ -8,19 +8,19 @@
   (Tile. num type))
 
 ;; initial position of the tiles.
-;; (def init-pos [[1 2 3]
-;;                [4 6 5]])
+(def init-pos [[1 2 3]
+               [4 6 5]])
 
 ;; (def init-pos [[2 4 1 6]
 ;;                [9 8 3 5]
 ;;                [7 11 10 12]])
 
-(def init-pos [[2 3 5]
-               [1 8 4]
-               [7 9 6]])
+;; (def init-pos [[2 3 5]
+;;                [1 8 4]
+;;                [7 9 6]])
 
 ;; num of tiles in a row/col.
-(def ntiles-row 3)
+(def ntiles-row 2)
 (def ntiles-col 3)
 (def ntiles (* ntiles-row ntiles-col))
 
