@@ -13,3 +13,6 @@ pom.xml
 .nrepl-port
 \#*
 .lein-env
+node/node_modules
+node/resources/public/js/compiled/out
+resources-old

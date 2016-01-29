@@ -42,7 +42,7 @@
                              [ring/ring-mock "0.3.0"]]
               :env {:production false}}}
 
-  :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
+  :clean-targets ^{:protect false} ["node/resources/public/js/compiled" "target"]
 
   :cljsbuild {:builds
               [{:id "dev"
@@ -52,8 +52,8 @@
 
                 :compiler {:main phogame.core
                            :asset-path "js/compiled/out"
-                           :output-to "resources/public/js/compiled/phogame.js"
-                           :output-dir "resources/public/js/compiled/out"
+                           :output-to "node/resources/public/js/compiled/phogame.js"
+                           :output-dir "node/resources/public/js/compiled/out"
                            :source-map-timestamp true
                            :source-map true}}
                ;; This next build is an compressed minified build for
@@ -61,10 +61,10 @@
                ;; lein cljsbuild once min
                {:id "min"
                 :source-paths ["src/cljs"]
-                :compiler {:output-to "resources/public/js/compiled/phogame.min.js"
+                :compiler {:output-to "node/resources/public/js/compiled/phogame.min.js"
                            :main phogame.core
                            :asset-path "js/compiled/out"
-                           :output-dir "resources/public/js/compiled/"
+                           :output-dir "node/resources/public/js/compiled/"
                            :optimizations :advanced
                            :pretty-print false}}]}
 
@@ -72,7 +72,7 @@
              ;; :server-port 3449 ;; default
              ;; :server-ip "127.0.0.1"
 
-             :css-dirs ["resources/public/css"] ;; watch and update CSS
+             :css-dirs ["node/resources/public/css"] ;; watch and update CSS
 
              ;; Start an nREPL server into the running figwheel process 
              ;; :nrepl-port 7888
