@@ -1,5 +1,4 @@
 (ns phogame.game
-  ;;(:require [clojure.core.typed :as t])
   )
 
 (defrecord Tile [num type])
@@ -15,9 +14,9 @@
 ;;                [9 8 3 5]
 ;;                [7 11 10 12]])
 
-(def init-pos [[2 3 5]
-               [1 8 4]
-               [7 9 6]])
+(def init-pos [[2 8 3]
+               [1 6 7]
+               [4 5 9]])
 
 ;; num of tiles in a row/col.
 (def ntiles-row 3)
