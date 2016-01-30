@@ -42,6 +42,8 @@
                              [ring/ring-mock "0.3.0"]]
               :env {:production false}}}
 
+  :auto-clean false
+	      
   :clean-targets ^{:protect false} ["node/resources/public/js/compiled" "target"]
 
   :cljsbuild {:builds
