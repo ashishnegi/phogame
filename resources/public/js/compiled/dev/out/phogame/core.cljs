@@ -59,16 +59,32 @@
 
 (defonce timer-update (timer-start))
 
+(declare move-cursor)
+(declare dir->action)
+
+(defn pos-in-game [num]
+  (ffirst (filter (fn [x]
+                   (= (:num (second x))
+                      num))
+                 (map-indexed vector (flatten (:state @game-state))))))
+
 (defn tile-com [tile]
-  [:div.tile 
-   [:div.number {:hidden (:hidden-tile-num @game-state)} (:num tile)]
-   [:img {:src (:img-src tile) 
-          :width "200px" 
-          :height "200px" 
-          :hidden (not (:hidden-tile-num @game-state))
-          :class (if (= (:type tile) :cursor)
-                   "cursor-tile"
-                   "normal-tile")}]])
+  (let [tile-num (pos-in-game (:num tile))]
+    [:div.tile
+     {:on-click #(move-cursor
+                  (dir->action (let [v (game/move-to-tile
+                                        (:state @game-state)
+                                        tile-num)]
+                                 (println "move-to-tile " v)
+                                 v)))}
+     [:div.number {:hidden (:hidden-tile-num @game-state)} (:num tile)]
+     [:img {:src (:img-src tile) 
+            :width "200px" 
+            :height "200px" 
+            :hidden (not (:hidden-tile-num @game-state))
+            :class (if (= (:type tile) :cursor)
+                     "cursor-tile"
+                     "normal-tile")}]]))
 
 (defn tiles-com [tiles]
   (into [:div.tiles-row ] (map tile-com tiles)))
@@ -139,6 +155,12 @@
    "UP" game/move-up
    "DOWN" game/move-down})
 
+(def dir->action
+  {:up game/move-up
+   :down game/move-down
+   :left game/move-left
+   :right game/move-right})
+
 (defn game-done [new-state]
   (do
     (js/clearInterval timer-update)
@@ -147,20 +169,23 @@
     (set! (-> js/document .-body .-style .-backgroundImage) "url('/images/main.jpg')")
     (js/alert "Great.. you did it.")))
 
-(defn handle-keydown [e]
+(defn move-cursor [direction-fn]
   (when-not (game-finished @game-state)
-    (when-let [f (action (codename (.-keyCode e)))]
-      (do (.preventDefault e)
-          (let [curr-state (:state @game-state)
-                new-state (make-game (f curr-state))
-                done (game/is-done? new-state)]
-            (do 
-              (println new-state)
-              (if done
-                (game-done new-state)
-                (if (= new-state curr-state)
-                  (js/alert "not right move.")
-                  (update-game :state new-state)))))))))
+    (when-let [f direction-fn]
+      (let [curr-state (:state @game-state)
+            new-state (make-game (f curr-state))
+            done (game/is-done? new-state)]
+        (do 
+          (println new-state)
+          (if done
+            (game-done new-state)
+            (if (= new-state curr-state)
+              (js/alert "not right move.")
+              (update-game :state new-state))))))))
+
+(defn handle-keydown [e]
+  (do
+    (move-cursor (action (codename (.-keyCode e))))))
 
 (defn init []
   (do

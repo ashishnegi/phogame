@@ -1,5 +1,4 @@
-(ns phogame.game
-  )
+(ns phogame.game)
 
 (defrecord Tile [num type])
 
@@ -61,12 +60,18 @@
 
 (defrecord Position [^int row ^int col])
 
+(defn pos->row [pos]
+  (int (/ pos ntiles-col)))
+
+(defn pos->col [pos]
+  (int (- pos (* (pos->row pos) ntiles-col))))
+  
 ;; return the current position of cursor in the game.
 (defn cursor-pos [game]
   (if-let [pos-val (first (filter (fn [[_ x]] (is-cursor? x)) (map-indexed vector (flatten game))))]
     (let [pos (first pos-val)
-          row (int (/ pos ntiles-col))
-          col (int (- pos (* row ntiles-col)))]
+          row (pos->row pos)
+          col (pos->col pos)]
       (Position. row col))))
 
 (defn val-game [game row col]
@@ -74,8 +79,6 @@
 
 (defn make-cursor-tile []
   (make-tile ntiles :cursor))
-
-;; (t/ann move-up [(t/Vec (t/Vec Tile)) -> (t/Vec (t/Vec Tile))])
 
 (def direction [:up :right :down :left])
 
@@ -120,4 +123,17 @@
                (not (= (inc i) num)))
              (map-indexed vector (flatten game))))))
 
+
+(defn move-to-tile
+  [game to-tile]
+  (let [{cur-row :row cur-col :col} (cursor-pos game)
+        tile-row (pos->row to-tile)
+        tile-col (pos->col to-tile)]
+    (println "move-to-tile : " cur-row cur-col tile-row tile-col " : to-tile " to-tile)
+    (case [tile-row tile-col]
+      [(dec cur-row) cur-col] :up
+      [(inc cur-row) cur-col] :down
+      [cur-row (dec cur-col)] :left
+      [cur-row (inc cur-col)] :right
+      :none)))
 

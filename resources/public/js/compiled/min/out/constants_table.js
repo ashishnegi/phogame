@@ -247,6 +247,7 @@ cljs.core.cst$kw$componentWillMount = new cljs.core.Keyword(null,"componentWillM
 cljs.core.cst$sym$right = new cljs.core.Symbol(null,"right","right",1187949694,null);
 cljs.core.cst$sym$throw = new cljs.core.Symbol(null,"throw","throw",595905694,null);
 cljs.core.cst$kw$div$center_DASH_container = new cljs.core.Keyword(null,"div.center-container","div.center-container",1986574622);
+cljs.core.cst$kw$none = new cljs.core.Keyword(null,"none","none",1333468478);
 cljs.core.cst$kw$img = new cljs.core.Keyword(null,"img","img",1442687358);
 cljs.core.cst$sym$fseq = new cljs.core.Symbol(null,"fseq","fseq",-1466412450,null);
 cljs.core.cst$sym$and = new cljs.core.Symbol(null,"and","and",668631710,null);

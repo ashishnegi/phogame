@@ -34,11 +34,11 @@ var this__17466__auto____$1 = this;
 return cljs.core._lookup.call(null,this__17466__auto____$1,k__17467__auto__,null);
 });
 
-phogame.game.Tile.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__17468__auto__,k18190,else__17469__auto__){
+phogame.game.Tile.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__17468__auto__,k21427,else__17469__auto__){
 var self__ = this;
 var this__17468__auto____$1 = this;
-var G__18192 = (((k18190 instanceof cljs.core.Keyword))?k18190.fqn:null);
-switch (G__18192) {
+var G__21429 = (((k21427 instanceof cljs.core.Keyword))?k21427.fqn:null);
+switch (G__21429) {
 case "num":
 return self__.num;
 
@@ -48,7 +48,7 @@ return self__.type;
 
 break;
 default:
-return cljs.core.get.call(null,self__.__extmap,k18190,else__17469__auto__);
+return cljs.core.get.call(null,self__.__extmap,k21427,else__17469__auto__);
 
 }
 });
@@ -66,10 +66,10 @@ return cljs.core.pr_sequential_writer.call(null,writer__17481__auto__,pr_pair__1
 
 phogame.game.Tile.prototype.cljs$core$IIterable$ = true;
 
-phogame.game.Tile.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__18189){
+phogame.game.Tile.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__21426){
 var self__ = this;
-var G__18189__$1 = this;
-return (new cljs.core.RecordIter((0),G__18189__$1,2,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"num","num",1985240673),new cljs.core.Keyword(null,"type","type",1174270348)], null),cljs.core._iterator.call(null,self__.__extmap)));
+var G__21426__$1 = this;
+return (new cljs.core.RecordIter((0),G__21426__$1,2,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"num","num",1985240673),new cljs.core.Keyword(null,"type","type",1174270348)], null),cljs.core._iterator.call(null,self__.__extmap)));
 });
 
 phogame.game.Tile.prototype.cljs$core$IMeta$_meta$arity$1 = (function (this__17464__auto__){
@@ -135,18 +135,18 @@ return (new phogame.game.Tile(self__.num,self__.type,self__.__meta,cljs.core.not
 }
 });
 
-phogame.game.Tile.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__17473__auto__,k__17474__auto__,G__18189){
+phogame.game.Tile.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__17473__auto__,k__17474__auto__,G__21426){
 var self__ = this;
 var this__17473__auto____$1 = this;
-var pred__18193 = cljs.core.keyword_identical_QMARK_;
-var expr__18194 = k__17474__auto__;
-if(cljs.core.truth_(pred__18193.call(null,new cljs.core.Keyword(null,"num","num",1985240673),expr__18194))){
-return (new phogame.game.Tile(G__18189,self__.type,self__.__meta,self__.__extmap,null));
+var pred__21430 = cljs.core.keyword_identical_QMARK_;
+var expr__21431 = k__17474__auto__;
+if(cljs.core.truth_(pred__21430.call(null,new cljs.core.Keyword(null,"num","num",1985240673),expr__21431))){
+return (new phogame.game.Tile(G__21426,self__.type,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_(pred__18193.call(null,new cljs.core.Keyword(null,"type","type",1174270348),expr__18194))){
-return (new phogame.game.Tile(self__.num,G__18189,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_(pred__21430.call(null,new cljs.core.Keyword(null,"type","type",1174270348),expr__21431))){
+return (new phogame.game.Tile(self__.num,G__21426,self__.__meta,self__.__extmap,null));
 } else {
-return (new phogame.game.Tile(self__.num,self__.type,self__.__meta,cljs.core.assoc.call(null,self__.__extmap,k__17474__auto__,G__18189),null));
+return (new phogame.game.Tile(self__.num,self__.type,self__.__meta,cljs.core.assoc.call(null,self__.__extmap,k__17474__auto__,G__21426),null));
 }
 }
 });
@@ -157,10 +157,10 @@ var this__17478__auto____$1 = this;
 return cljs.core.seq.call(null,cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[new cljs.core.Keyword(null,"num","num",1985240673),self__.num],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[new cljs.core.Keyword(null,"type","type",1174270348),self__.type],null))], null),self__.__extmap));
 });
 
-phogame.game.Tile.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__17465__auto__,G__18189){
+phogame.game.Tile.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__17465__auto__,G__21426){
 var self__ = this;
 var this__17465__auto____$1 = this;
-return (new phogame.game.Tile(self__.num,self__.type,G__18189,self__.__extmap,self__.__hash));
+return (new phogame.game.Tile(self__.num,self__.type,G__21426,self__.__extmap,self__.__hash));
 });
 
 phogame.game.Tile.prototype.cljs$core$ICollection$_conj$arity$2 = (function (this__17471__auto__,entry__17472__auto__){
@@ -191,14 +191,14 @@ phogame.game.__GT_Tile = (function phogame$game$__GT_Tile(num,type){
 return (new phogame.game.Tile(num,type,null,null,null));
 });
 
-phogame.game.map__GT_Tile = (function phogame$game$map__GT_Tile(G__18191){
-return (new phogame.game.Tile(new cljs.core.Keyword(null,"num","num",1985240673).cljs$core$IFn$_invoke$arity$1(G__18191),new cljs.core.Keyword(null,"type","type",1174270348).cljs$core$IFn$_invoke$arity$1(G__18191),null,cljs.core.dissoc.call(null,G__18191,new cljs.core.Keyword(null,"num","num",1985240673),new cljs.core.Keyword(null,"type","type",1174270348)),null));
+phogame.game.map__GT_Tile = (function phogame$game$map__GT_Tile(G__21428){
+return (new phogame.game.Tile(new cljs.core.Keyword(null,"num","num",1985240673).cljs$core$IFn$_invoke$arity$1(G__21428),new cljs.core.Keyword(null,"type","type",1174270348).cljs$core$IFn$_invoke$arity$1(G__21428),null,cljs.core.dissoc.call(null,G__21428,new cljs.core.Keyword(null,"num","num",1985240673),new cljs.core.Keyword(null,"type","type",1174270348)),null));
 });
 
 phogame.game.make_tile = (function phogame$game$make_tile(num,type){
 return (new phogame.game.Tile(num,type,null,null,null));
 });
-phogame.game.init_pos = new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(2),(3),(5)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(1),(8),(4)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(7),(9),(6)], null)], null);
+phogame.game.init_pos = new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(2),(8),(3)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(1),(6),(7)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(4),(5),(9)], null)], null);
 phogame.game.ntiles_row = (3);
 phogame.game.ntiles_col = (3);
 phogame.game.ntiles = (phogame.game.ntiles_row * phogame.game.ntiles_col);
@@ -267,11 +267,11 @@ var this__17466__auto____$1 = this;
 return cljs.core._lookup.call(null,this__17466__auto____$1,k__17467__auto__,null);
 });
 
-phogame.game.Position.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__17468__auto__,k18198,else__17469__auto__){
+phogame.game.Position.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__17468__auto__,k21435,else__17469__auto__){
 var self__ = this;
 var this__17468__auto____$1 = this;
-var G__18200 = (((k18198 instanceof cljs.core.Keyword))?k18198.fqn:null);
-switch (G__18200) {
+var G__21437 = (((k21435 instanceof cljs.core.Keyword))?k21435.fqn:null);
+switch (G__21437) {
 case "row":
 return self__.row;
 
@@ -281,7 +281,7 @@ return self__.col;
 
 break;
 default:
-return cljs.core.get.call(null,self__.__extmap,k18198,else__17469__auto__);
+return cljs.core.get.call(null,self__.__extmap,k21435,else__17469__auto__);
 
 }
 });
@@ -299,10 +299,10 @@ return cljs.core.pr_sequential_writer.call(null,writer__17481__auto__,pr_pair__1
 
 phogame.game.Position.prototype.cljs$core$IIterable$ = true;
 
-phogame.game.Position.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__18197){
+phogame.game.Position.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__21434){
 var self__ = this;
-var G__18197__$1 = this;
-return (new cljs.core.RecordIter((0),G__18197__$1,2,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"row","row",-570139521),new cljs.core.Keyword(null,"col","col",-1959363084)], null),cljs.core._iterator.call(null,self__.__extmap)));
+var G__21434__$1 = this;
+return (new cljs.core.RecordIter((0),G__21434__$1,2,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"row","row",-570139521),new cljs.core.Keyword(null,"col","col",-1959363084)], null),cljs.core._iterator.call(null,self__.__extmap)));
 });
 
 phogame.game.Position.prototype.cljs$core$IMeta$_meta$arity$1 = (function (this__17464__auto__){
@@ -368,18 +368,18 @@ return (new phogame.game.Position(self__.row,self__.col,self__.__meta,cljs.core.
 }
 });
 
-phogame.game.Position.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__17473__auto__,k__17474__auto__,G__18197){
+phogame.game.Position.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__17473__auto__,k__17474__auto__,G__21434){
 var self__ = this;
 var this__17473__auto____$1 = this;
-var pred__18201 = cljs.core.keyword_identical_QMARK_;
-var expr__18202 = k__17474__auto__;
-if(cljs.core.truth_(pred__18201.call(null,new cljs.core.Keyword(null,"row","row",-570139521),expr__18202))){
-return (new phogame.game.Position(G__18197,self__.col,self__.__meta,self__.__extmap,null));
+var pred__21438 = cljs.core.keyword_identical_QMARK_;
+var expr__21439 = k__17474__auto__;
+if(cljs.core.truth_(pred__21438.call(null,new cljs.core.Keyword(null,"row","row",-570139521),expr__21439))){
+return (new phogame.game.Position(G__21434,self__.col,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_(pred__18201.call(null,new cljs.core.Keyword(null,"col","col",-1959363084),expr__18202))){
-return (new phogame.game.Position(self__.row,G__18197,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_(pred__21438.call(null,new cljs.core.Keyword(null,"col","col",-1959363084),expr__21439))){
+return (new phogame.game.Position(self__.row,G__21434,self__.__meta,self__.__extmap,null));
 } else {
-return (new phogame.game.Position(self__.row,self__.col,self__.__meta,cljs.core.assoc.call(null,self__.__extmap,k__17474__auto__,G__18197),null));
+return (new phogame.game.Position(self__.row,self__.col,self__.__meta,cljs.core.assoc.call(null,self__.__extmap,k__17474__auto__,G__21434),null));
 }
 }
 });
@@ -390,10 +390,10 @@ var this__17478__auto____$1 = this;
 return cljs.core.seq.call(null,cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[new cljs.core.Keyword(null,"row","row",-570139521),self__.row],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[new cljs.core.Keyword(null,"col","col",-1959363084),self__.col],null))], null),self__.__extmap));
 });
 
-phogame.game.Position.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__17465__auto__,G__18197){
+phogame.game.Position.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__17465__auto__,G__21434){
 var self__ = this;
 var this__17465__auto____$1 = this;
-return (new phogame.game.Position(self__.row,self__.col,G__18197,self__.__extmap,self__.__hash));
+return (new phogame.game.Position(self__.row,self__.col,G__21434,self__.__extmap,self__.__hash));
 });
 
 phogame.game.Position.prototype.cljs$core$ICollection$_conj$arity$2 = (function (this__17471__auto__,entry__17472__auto__){
@@ -424,22 +424,28 @@ phogame.game.__GT_Position = (function phogame$game$__GT_Position(row,col){
 return (new phogame.game.Position(row,col,null,null,null));
 });
 
-phogame.game.map__GT_Position = (function phogame$game$map__GT_Position(G__18199){
-return (new phogame.game.Position(new cljs.core.Keyword(null,"row","row",-570139521).cljs$core$IFn$_invoke$arity$1(G__18199),new cljs.core.Keyword(null,"col","col",-1959363084).cljs$core$IFn$_invoke$arity$1(G__18199),null,cljs.core.dissoc.call(null,G__18199,new cljs.core.Keyword(null,"row","row",-570139521),new cljs.core.Keyword(null,"col","col",-1959363084)),null));
+phogame.game.map__GT_Position = (function phogame$game$map__GT_Position(G__21436){
+return (new phogame.game.Position(new cljs.core.Keyword(null,"row","row",-570139521).cljs$core$IFn$_invoke$arity$1(G__21436),new cljs.core.Keyword(null,"col","col",-1959363084).cljs$core$IFn$_invoke$arity$1(G__21436),null,cljs.core.dissoc.call(null,G__21436,new cljs.core.Keyword(null,"row","row",-570139521),new cljs.core.Keyword(null,"col","col",-1959363084)),null));
 });
 
+phogame.game.pos__GT_row = (function phogame$game$pos__GT_row(pos){
+return ((pos / phogame.game.ntiles_col) | (0));
+});
+phogame.game.pos__GT_col = (function phogame$game$pos__GT_col(pos){
+return ((pos - (phogame.game.pos__GT_row.call(null,pos) * phogame.game.ntiles_col)) | (0));
+});
 phogame.game.cursor_pos = (function phogame$game$cursor_pos(game){
-var temp__4423__auto__ = cljs.core.first.call(null,cljs.core.filter.call(null,(function (p__18207){
-var vec__18208 = p__18207;
-var _ = cljs.core.nth.call(null,vec__18208,(0),null);
-var x = cljs.core.nth.call(null,vec__18208,(1),null);
+var temp__4423__auto__ = cljs.core.first.call(null,cljs.core.filter.call(null,(function (p__21444){
+var vec__21445 = p__21444;
+var _ = cljs.core.nth.call(null,vec__21445,(0),null);
+var x = cljs.core.nth.call(null,vec__21445,(1),null);
 return phogame.game.is_cursor_QMARK_.call(null,x);
 }),cljs.core.map_indexed.call(null,cljs.core.vector,cljs.core.flatten.call(null,game))));
 if(cljs.core.truth_(temp__4423__auto__)){
 var pos_val = temp__4423__auto__;
 var pos = cljs.core.first.call(null,pos_val);
-var row = ((pos / phogame.game.ntiles_col) | (0));
-var col = ((pos - (row * phogame.game.ntiles_col)) | (0));
+var row = phogame.game.pos__GT_row.call(null,pos);
+var col = phogame.game.pos__GT_col.call(null,pos);
 return (new phogame.game.Position(row,col,null,null,null));
 } else {
 return null;
@@ -454,22 +460,22 @@ return phogame.game.make_tile.call(null,phogame.game.ntiles,new cljs.core.Keywor
 phogame.game.direction = new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"up","up",-269712113),new cljs.core.Keyword(null,"right","right",-452581833),new cljs.core.Keyword(null,"down","down",1565245570),new cljs.core.Keyword(null,"left","left",-399115937)], null);
 phogame.game.move_cursor = (function phogame$game$move_cursor(game,can_move_fn_QMARK_,row_fn,col_fn){
 if(cljs.core.truth_(can_move_fn_QMARK_.call(null,game))){
-var map__18211 = phogame.game.cursor_pos.call(null,game);
-var map__18211__$1 = ((((!((map__18211 == null)))?((((map__18211.cljs$lang$protocol_mask$partition0$ & (64))) || (map__18211.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__18211):map__18211);
-var row = cljs.core.get.call(null,map__18211__$1,new cljs.core.Keyword(null,"row","row",-570139521));
-var col = cljs.core.get.call(null,map__18211__$1,new cljs.core.Keyword(null,"col","col",-1959363084));
+var map__21448 = phogame.game.cursor_pos.call(null,game);
+var map__21448__$1 = ((((!((map__21448 == null)))?((((map__21448.cljs$lang$protocol_mask$partition0$ & (64))) || (map__21448.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__21448):map__21448);
+var row = cljs.core.get.call(null,map__21448__$1,new cljs.core.Keyword(null,"row","row",-570139521));
+var col = cljs.core.get.call(null,map__21448__$1,new cljs.core.Keyword(null,"col","col",-1959363084));
 var next_row = row_fn.call(null,row);
 var next_col = col_fn.call(null,col);
 var val_above = phogame.game.val_game.call(null,game,next_row,next_col);
 if(((next_row >= (0))) && ((next_col >= (0))) && ((next_row < phogame.game.ntiles_row)) && ((next_col < phogame.game.ntiles_col))){
-return cljs.core.update_in.call(null,cljs.core.update_in.call(null,game,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [row,col], null),((function (map__18211,map__18211__$1,row,col,next_row,next_col,val_above){
+return cljs.core.update_in.call(null,cljs.core.update_in.call(null,game,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [row,col], null),((function (map__21448,map__21448__$1,row,col,next_row,next_col,val_above){
 return (function (_,val){
 return phogame.game.make_game_tile.call(null,val);
-});})(map__18211,map__18211__$1,row,col,next_row,next_col,val_above))
-,val_above),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [next_row,next_col], null),((function (map__18211,map__18211__$1,row,col,next_row,next_col,val_above){
+});})(map__21448,map__21448__$1,row,col,next_row,next_col,val_above))
+,val_above),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [next_row,next_col], null),((function (map__21448,map__21448__$1,row,col,next_row,next_col,val_above){
 return (function (x){
 return phogame.game.make_cursor_tile.call(null);
-});})(map__18211,map__18211__$1,row,col,next_row,next_col,val_above))
+});})(map__21448,map__21448__$1,row,col,next_row,next_col,val_above))
 );
 } else {
 return game;
@@ -503,15 +509,44 @@ phogame.game.is_done_QMARK_ = (function phogame$game$is_done_QMARK_(game){
 if(cljs.core.empty_QMARK_.call(null,game)){
 return cljs.core.println.call(null,"Error");
 } else {
-return cljs.core.empty_QMARK_.call(null,cljs.core.filter.call(null,(function (p__18217){
-var vec__18218 = p__18217;
-var i = cljs.core.nth.call(null,vec__18218,(0),null);
-var map__18219 = cljs.core.nth.call(null,vec__18218,(1),null);
-var map__18219__$1 = ((((!((map__18219 == null)))?((((map__18219.cljs$lang$protocol_mask$partition0$ & (64))) || (map__18219.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__18219):map__18219);
-var num = cljs.core.get.call(null,map__18219__$1,new cljs.core.Keyword(null,"num","num",1985240673));
+return cljs.core.empty_QMARK_.call(null,cljs.core.filter.call(null,(function (p__21454){
+var vec__21455 = p__21454;
+var i = cljs.core.nth.call(null,vec__21455,(0),null);
+var map__21456 = cljs.core.nth.call(null,vec__21455,(1),null);
+var map__21456__$1 = ((((!((map__21456 == null)))?((((map__21456.cljs$lang$protocol_mask$partition0$ & (64))) || (map__21456.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__21456):map__21456);
+var num = cljs.core.get.call(null,map__21456__$1,new cljs.core.Keyword(null,"num","num",1985240673));
 return !(cljs.core._EQ_.call(null,(i + (1)),num));
 }),cljs.core.map_indexed.call(null,cljs.core.vector,cljs.core.flatten.call(null,game))));
 }
 });
+phogame.game.move_to_tile = (function phogame$game$move_to_tile(game,to_tile){
+var map__21461 = phogame.game.cursor_pos.call(null,game);
+var map__21461__$1 = ((((!((map__21461 == null)))?((((map__21461.cljs$lang$protocol_mask$partition0$ & (64))) || (map__21461.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__21461):map__21461);
+var cur_row = cljs.core.get.call(null,map__21461__$1,new cljs.core.Keyword(null,"row","row",-570139521));
+var cur_col = cljs.core.get.call(null,map__21461__$1,new cljs.core.Keyword(null,"col","col",-1959363084));
+var tile_row = phogame.game.pos__GT_row.call(null,to_tile);
+var tile_col = phogame.game.pos__GT_col.call(null,to_tile);
+cljs.core.println.call(null,"move-to-tile : ",cur_row,cur_col,tile_row,tile_col," : to-tile ",to_tile);
 
-//# sourceMappingURL=game.js.map?rel=1454142141923
+var G__21463 = new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [tile_row,tile_col], null);
+if(cljs.core._EQ_.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(cur_row - (1)),cur_col], null),G__21463)){
+return new cljs.core.Keyword(null,"up","up",-269712113);
+} else {
+if(cljs.core._EQ_.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(cur_row + (1)),cur_col], null),G__21463)){
+return new cljs.core.Keyword(null,"down","down",1565245570);
+} else {
+if(cljs.core._EQ_.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cur_row,(cur_col - (1))], null),G__21463)){
+return new cljs.core.Keyword(null,"left","left",-399115937);
+} else {
+if(cljs.core._EQ_.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cur_row,(cur_col + (1))], null),G__21463)){
+return new cljs.core.Keyword(null,"right","right",-452581833);
+} else {
+return new cljs.core.Keyword(null,"none","none",1333468478);
+
+}
+}
+}
+}
+});
+
+//# sourceMappingURL=game.js.map?rel=1454177553615

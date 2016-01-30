@@ -428,6 +428,12 @@ phogame.game.map__GT_Position = (function phogame$game$map__GT_Position(G__7469)
 return (new phogame.game.Position(cljs.core.cst$kw$row.cljs$core$IFn$_invoke$arity$1(G__7469),cljs.core.cst$kw$col.cljs$core$IFn$_invoke$arity$1(G__7469),null,cljs.core.dissoc.cljs$core$IFn$_invoke$arity$variadic(G__7469,cljs.core.cst$kw$row,cljs.core.array_seq([cljs.core.cst$kw$col], 0)),null));
 });
 
+phogame.game.pos__GT_row = (function phogame$game$pos__GT_row(pos){
+return ((pos / phogame.game.ntiles_col) | (0));
+});
+phogame.game.pos__GT_col = (function phogame$game$pos__GT_col(pos){
+return ((pos - (phogame.game.pos__GT_row(pos) * phogame.game.ntiles_col)) | (0));
+});
 phogame.game.cursor_pos = (function phogame$game$cursor_pos(game){
 var temp__4423__auto__ = cljs.core.first(cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p__7477){
 var vec__7478 = p__7477;
@@ -438,8 +444,8 @@ return phogame.game.is_cursor_QMARK_(x);
 if(cljs.core.truth_(temp__4423__auto__)){
 var pos_val = temp__4423__auto__;
 var pos = cljs.core.first(pos_val);
-var row = ((pos / phogame.game.ntiles_col) | (0));
-var col = ((pos - (row * phogame.game.ntiles_col)) | (0));
+var row = phogame.game.pos__GT_row(pos);
+var col = phogame.game.pos__GT_col(pos);
 return (new phogame.game.Position(row,col,null,null,null));
 } else {
 return null;
@@ -511,5 +517,34 @@ var map__7489__$1 = ((((!((map__7489 == null)))?((((map__7489.cljs$lang$protocol
 var num = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__7489__$1,cljs.core.cst$kw$num);
 return !(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((i + (1)),num));
 }),cljs.core.map_indexed.cljs$core$IFn$_invoke$arity$2(cljs.core.vector,cljs.core.flatten(game))));
+}
+});
+phogame.game.move_to_tile = (function phogame$game$move_to_tile(game,to_tile){
+var map__7494 = phogame.game.cursor_pos(game);
+var map__7494__$1 = ((((!((map__7494 == null)))?((((map__7494.cljs$lang$protocol_mask$partition0$ & (64))) || (map__7494.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__7494):map__7494);
+var cur_row = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__7494__$1,cljs.core.cst$kw$row);
+var cur_col = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__7494__$1,cljs.core.cst$kw$col);
+var tile_row = phogame.game.pos__GT_row(to_tile);
+var tile_col = phogame.game.pos__GT_col(to_tile);
+cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["move-to-tile : ",cur_row,cur_col,tile_row,tile_col," : to-tile ",to_tile], 0));
+
+var G__7496 = new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [tile_row,tile_col], null);
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(cur_row - (1)),cur_col], null),G__7496)){
+return cljs.core.cst$kw$up;
+} else {
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(cur_row + (1)),cur_col], null),G__7496)){
+return cljs.core.cst$kw$down;
+} else {
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cur_row,(cur_col - (1))], null),G__7496)){
+return cljs.core.cst$kw$left;
+} else {
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cur_row,(cur_col + (1))], null),G__7496)){
+return cljs.core.cst$kw$right;
+} else {
+return cljs.core.cst$kw$none;
+
+}
+}
+}
 }
 });

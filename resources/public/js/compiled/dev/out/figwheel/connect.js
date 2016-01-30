@@ -5,29 +5,29 @@ goog.require('figwheel.client');
 goog.require('figwheel.client.utils');
 goog.require('phogame.core');
 figwheel.client.start.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"on-jsload","on-jsload",-395756602),(function() { 
-var G__24543__delegate = function (x){
+var G__21524__delegate = function (x){
 if(cljs.core.truth_(phogame.core.on_js_reload)){
 return cljs.core.apply.call(null,phogame.core.on_js_reload,x);
 } else {
 return figwheel.client.utils.log.call(null,new cljs.core.Keyword(null,"debug","debug",-1608172596),"Figwheel: :on-jsload hook 'phogame.core/on-js-reload' is missing");
 }
 };
-var G__24543 = function (var_args){
+var G__21524 = function (var_args){
 var x = null;
 if (arguments.length > 0) {
-var G__24544__i = 0, G__24544__a = new Array(arguments.length -  0);
-while (G__24544__i < G__24544__a.length) {G__24544__a[G__24544__i] = arguments[G__24544__i + 0]; ++G__24544__i;}
-  x = new cljs.core.IndexedSeq(G__24544__a,0);
+var G__21525__i = 0, G__21525__a = new Array(arguments.length -  0);
+while (G__21525__i < G__21525__a.length) {G__21525__a[G__21525__i] = arguments[G__21525__i + 0]; ++G__21525__i;}
+  x = new cljs.core.IndexedSeq(G__21525__a,0);
 } 
-return G__24543__delegate.call(this,x);};
-G__24543.cljs$lang$maxFixedArity = 0;
-G__24543.cljs$lang$applyTo = (function (arglist__24545){
-var x = cljs.core.seq(arglist__24545);
-return G__24543__delegate(x);
+return G__21524__delegate.call(this,x);};
+G__21524.cljs$lang$maxFixedArity = 0;
+G__21524.cljs$lang$applyTo = (function (arglist__21526){
+var x = cljs.core.seq(arglist__21526);
+return G__21524__delegate(x);
 });
-G__24543.cljs$core$IFn$_invoke$arity$variadic = G__24543__delegate;
-return G__24543;
+G__21524.cljs$core$IFn$_invoke$arity$variadic = G__21524__delegate;
+return G__21524;
 })()
 ,new cljs.core.Keyword(null,"build-id","build-id",1642831089),"dev",new cljs.core.Keyword(null,"websocket-url","websocket-url",-490444938),"ws://localhost:3449/figwheel-ws"], null));
 
-//# sourceMappingURL=connect.js.map?rel=1454142155644
+//# sourceMappingURL=connect.js.map?rel=1454177975045
