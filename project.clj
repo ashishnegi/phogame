@@ -44,7 +44,7 @@
 
   :auto-clean false
 	      
-  :clean-targets ^{:protect false} ["node/resources/public/js/compiled" "target"]
+  :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
 
   :cljsbuild {:builds
               [{:id "dev"
@@ -53,9 +53,9 @@
                 :figwheel {:on-jsload "phogame.core/on-js-reload"}
 
                 :compiler {:main phogame.core
-                           :asset-path "js/compiled/out"
-                           :output-to "node/resources/public/js/compiled/phogame.js"
-                           :output-dir "node/resources/public/js/compiled/out"
+                           :asset-path "js/compiled/dev/out"
+                           :output-to "resources/public/js/compiled/dev/phogame.js"
+                           :output-dir "resources/public/js/compiled/dev/out"
                            :source-map-timestamp true
                            :source-map true}}
                ;; This next build is an compressed minified build for
@@ -63,10 +63,10 @@
                ;; lein cljsbuild once min
                {:id "min"
                 :source-paths ["src/cljs"]
-                :compiler {:output-to "node/resources/public/js/compiled/phogame.min.js"
+                :compiler {:output-to "resources/public/js/compiled/min/phogame.js"
                            :main phogame.core
-                           :asset-path "js/compiled/out"
-                           :output-dir "node/resources/public/js/compiled/"
+                           :asset-path "js/compiled/min"
+                           :output-dir "resources/public/js/compiled/min/out"
                            :optimizations :advanced
                            :pretty-print false}}]}
 
@@ -74,7 +74,7 @@
              ;; :server-port 3449 ;; default
              ;; :server-ip "127.0.0.1"
 
-             :css-dirs ["node/resources/public/css"] ;; watch and update CSS
+             :css-dirs ["resources/public/css"] ;; watch and update CSS
 
              ;; Start an nREPL server into the running figwheel process 
              ;; :nrepl-port 7888

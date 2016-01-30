@@ -1,0 +1,241 @@
+
+/* some style */
+
+html, body { height : 100%; }
+body > #app
+{
+    height : 93%;
+    overflow : none;
+    min-height : 80%;
+}
+
+.tiles-row
+{
+		clear:both;		
+}
+
+.tile
+{
+		width : 200px;
+		height : 200px;
+		float : left;
+}
+
+.cursor-tile
+{
+		width : 199px;
+		height : 198px;
+		border : solid;
+		border-width : 1px;
+		border-color: red;
+		float : left;
+}
+
+.title 
+{
+		color: #4356B5;
+		font-family: 'Trocchi', serif; 
+		font-size: 45px; 
+		font-weight: normal; 
+		line-height: 48px; 
+		margin: 0;
+		text-align: center;
+    margin-bottom : 2%;
+    margin-top : 2%;
+}
+
+.pictures
+{
+    /*
+      left : 50%;
+      margin-left : -400px;
+      */
+    padding : 0px 200px 0px 200px;
+    position : relative;
+    margin-bottom : 4%;
+    height : 605px;
+    width: 610px;
+}
+
+.tile > .number
+{
+		color: #7c795d; 
+		font-family: 'Trocchi', serif; 
+		font-size: 45px; 
+		font-weight: normal; 
+		line-height: 48px; 
+		margin: 0;
+}
+
+.intro
+{
+    position : absolute;
+    top : 30%;
+    left : 50%;
+    margin-left:-200px;
+}
+
+.welcome-msg
+{
+    font-family: Satisfy, cursive;
+	  font-weight:normal;
+	  font-size:24px;
+    margin-bottom:30px;
+    width:350px;
+		color : #301F89;
+}
+
+.name input[type="text"] {
+    padding: 10px;
+    border: solid 1px #fff;
+    box-shadow: inset 1px 1px 2px 0 #707070;
+    transition: box-shadow 0.3s;
+    font-family: "Open Sans", sans-serif;
+		color: #301F89;
+}
+
+.name input[type="text"]:focus,
+.name input[type="text"].focus {
+    box-shadow: inset 1px 1px 2px 0 #c9c9c9;
+}
+
+.footer
+{
+    z-index : 10;
+    position : relative;
+    height : 20px;
+    padding-left : 40%;
+    font-family: Satisfy, cursive;
+		color : #00B8FF;
+}
+
+.left-container
+{
+    float:left;
+    padding-left: 200px;
+    padding-top: 15%;
+		width : 300px;
+}
+
+.right-container
+{
+    height: 300px;
+    float: left;
+    padding-top: 15%;
+}
+
+.center-container
+{
+    float:left;
+}
+
+.container
+{
+    padding-bottom: 3em;
+}
+
+.animate
+{
+	transition: all 0.1s;
+	-webkit-transition: all 0.1s;
+}
+
+.action-button
+{
+	position: relative;
+	padding: 10px 40px;
+  margin: 0px 10px 10px 0px;
+  float: left;
+	border-radius: 10px;
+	font-family: 'Pacifico', cursive;
+	font-size: 25px;
+	color: #FFF;
+	text-decoration: none;	
+}
+
+.blue
+{
+	background-color: #3498DB;
+	border-bottom: 5px solid #2980B9;
+	text-shadow: 0px -2px #2980B9;
+}
+
+.red
+{
+	background-color: #E74C3C;
+	border-bottom: 5px solid #BD3E31;
+	text-shadow: 0px -2px #BD3E31;
+}
+
+.green
+{
+	background-color: #82BF56;
+	border-bottom: 5px solid #669644;
+	text-shadow: 0px -2px #669644;
+}
+
+.yellow
+{
+	background-color: #F2CF66;
+	border-bottom: 5px solid #D1B358;
+	text-shadow: 0px -2px #D1B358;
+}
+
+.action-button:active
+{
+	transform: translate(0px,5px);
+  -webkit-transform: translate(0px,5px);
+	border-bottom: 1px solid;
+}
+
+.clock
+{
+    font: bold 34px "Century Schoolbook", Georgia, Times, serif;
+		color : #713BB9;
+}
+
+.secs
+{
+    font: bold 24px "Century Schoolbook", Georgia, Times, serif;
+		padding-bottom : 30px;
+		color : #713BB9;
+}
+
+.encourage-msg
+{
+    font: italic 20px "Century Schoolbook", Georgia, Times, serif;
+		color : #16AAAA
+}
+
+@media (max-width: 1600px) 
+{
+		.pictures 
+		{
+				padding-left : 100px;
+				padding-right : 100px;
+		}
+
+		.left-container
+		{
+				padding-left : 100px;
+				width : 200px;
+		}
+
+		.right-container
+		{
+		}
+}
+
+@media (max-width: 1400px)
+{
+    .pictures
+    {
+        padding-left : 20px;
+        padding-right : 20px;
+    }
+
+    .left-container
+    {
+        padding-left : 50px;
+    }
+}
