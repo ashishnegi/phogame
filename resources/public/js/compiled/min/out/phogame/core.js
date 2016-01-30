@@ -114,17 +114,17 @@ return false;
 }
 });
 phogame.core.game_app = (function phogame$core$game_app(){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$container,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$intro,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$id,"game-intro"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$welcome_DASH_msg,"I would like to remember you. Your name, please."], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$name,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$input,new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$type,"text",cljs.core.cst$kw$placeholder,"your name",cljs.core.cst$kw$on_DASH_key_DASH_press,(function (p1__10775_SHARP_){
-if(cljs.core.truth_((function (){var and__4656__auto__ = phogame.core.is_enter_QMARK_(p1__10775_SHARP_);
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$container,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$intro,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$id,"game-intro"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$welcome_DASH_msg,"I would like to remember you. Your name, please."], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$name,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$input,new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$type,"text",cljs.core.cst$kw$placeholder,"your name",cljs.core.cst$kw$on_DASH_key_DASH_press,(function (p1__7671_SHARP_){
+if(cljs.core.truth_((function (){var and__4656__auto__ = phogame.core.is_enter_QMARK_(p1__7671_SHARP_);
 if(cljs.core.truth_(and__4656__auto__)){
-return (cljs.core.count(phogame.core.get_val(p1__10775_SHARP_)) > (0));
+return (cljs.core.count(phogame.core.get_val(p1__7671_SHARP_)) > (0));
 } else {
 return and__4656__auto__;
 }
 })())){
 phogame.core.hide_intro();
 
-phogame.core.update_game(cljs.core.cst$kw$user_DASH_name,phogame.core.get_val(p1__10775_SHARP_));
+phogame.core.update_game(cljs.core.cst$kw$user_DASH_name,phogame.core.get_val(p1__7671_SHARP_));
 
 return phogame.core.show_game();
 } else {
@@ -139,9 +139,9 @@ cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["Rel
 
 (cljs.core.reset_BANG_.cljs$core$IFn$_invoke$arity$2 ? cljs.core.reset_BANG_.cljs$core$IFn$_invoke$arity$2(phogame.core.game_state,phogame.core.init_state) : cljs.core.reset_BANG_.call(null,phogame.core.game_state,phogame.core.init_state));
 
-var G__10778 = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [phogame.core.game_app], null);
-var G__10779 = document.getElementById("app");
-return (reagent.core.render_component.cljs$core$IFn$_invoke$arity$2 ? reagent.core.render_component.cljs$core$IFn$_invoke$arity$2(G__10778,G__10779) : reagent.core.render_component.call(null,G__10778,G__10779));
+var G__7674 = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [phogame.core.game_app], null);
+var G__7675 = document.getElementById("app");
+return (reagent.core.render_component.cljs$core$IFn$_invoke$arity$2 ? reagent.core.render_component.cljs$core$IFn$_invoke$arity$2(G__7674,G__7675) : reagent.core.render_component.call(null,G__7674,G__7675));
 });
 phogame.core.codename = new cljs.core.PersistentArrayMap(null, 4, [(37),"LEFT",(38),"UP",(39),"RIGHT",(40),"DOWN"], null);
 phogame.core.action = new cljs.core.PersistentArrayMap(null, 4, ["LEFT",phogame.game.move_left,"RIGHT",phogame.game.move_right,"UP",phogame.game.move_up,"DOWN",phogame.game.move_down], null);
@@ -160,10 +160,10 @@ phogame.core.handle_keydown = (function phogame$core$handle_keydown(e){
 if(cljs.core.truth_(phogame.core.game_finished((cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(phogame.core.game_state) : cljs.core.deref.call(null,phogame.core.game_state))))){
 return null;
 } else {
-var temp__4425__auto__ = (function (){var G__10784 = (function (){var G__10785 = e.keyCode;
-return (phogame.core.codename.cljs$core$IFn$_invoke$arity$1 ? phogame.core.codename.cljs$core$IFn$_invoke$arity$1(G__10785) : phogame.core.codename.call(null,G__10785));
+var temp__4425__auto__ = (function (){var G__7680 = (function (){var G__7681 = e.keyCode;
+return (phogame.core.codename.cljs$core$IFn$_invoke$arity$1 ? phogame.core.codename.cljs$core$IFn$_invoke$arity$1(G__7681) : phogame.core.codename.call(null,G__7681));
 })();
-return (phogame.core.action.cljs$core$IFn$_invoke$arity$1 ? phogame.core.action.cljs$core$IFn$_invoke$arity$1(G__10784) : phogame.core.action.call(null,G__10784));
+return (phogame.core.action.cljs$core$IFn$_invoke$arity$1 ? phogame.core.action.cljs$core$IFn$_invoke$arity$1(G__7680) : phogame.core.action.call(null,G__7680));
 })();
 if(cljs.core.truth_(temp__4425__auto__)){
 var f = temp__4425__auto__;
@@ -193,9 +193,9 @@ phogame.core.on_js_reload();
 
 document.addEventListener("keydown",phogame.core.handle_keydown);
 
-var G__10788 = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [phogame.core.game_app], null);
-var G__10789 = document.getElementById("app");
-return (reagent.core.render_component.cljs$core$IFn$_invoke$arity$2 ? reagent.core.render_component.cljs$core$IFn$_invoke$arity$2(G__10788,G__10789) : reagent.core.render_component.call(null,G__10788,G__10789));
+var G__7684 = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [phogame.core.game_app], null);
+var G__7685 = document.getElementById("app");
+return (reagent.core.render_component.cljs$core$IFn$_invoke$arity$2 ? reagent.core.render_component.cljs$core$IFn$_invoke$arity$2(G__7684,G__7685) : reagent.core.render_component.call(null,G__7684,G__7685));
 });
 if(typeof phogame.core.start !== 'undefined'){
 } else {
