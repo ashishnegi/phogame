@@ -130,17 +130,17 @@ return false;
 }
 });
 phogame.core.game_app = (function phogame$core$game_app(){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.container","div.container",72419955),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.intro","div.intro",1937098677),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"id","id",-1388402092),"game-intro"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.welcome-msg","div.welcome-msg",-1064809418),"I would like to remember you. Your name, please."], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.name","div.name",1027675228),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"input","input",556931961),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"type","type",1174270348),"text",new cljs.core.Keyword(null,"placeholder","placeholder",-104873083),"your name",new cljs.core.Keyword(null,"on-key-press","on-key-press",-399563677),(function (p1__21521_SHARP_){
-if(cljs.core.truth_((function (){var and__16840__auto__ = phogame.core.is_enter_QMARK_.call(null,p1__21521_SHARP_);
-if(cljs.core.truth_(and__16840__auto__)){
-return (cljs.core.count.call(null,phogame.core.get_val.call(null,p1__21521_SHARP_)) > (0));
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.container","div.container",72419955),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.intro","div.intro",1937098677),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"id","id",-1388402092),"game-intro"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.welcome-msg","div.welcome-msg",-1064809418),"I would like to remember you. Your name, please."], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.name","div.name",1027675228),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"input","input",556931961),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"type","type",1174270348),"text",new cljs.core.Keyword(null,"placeholder","placeholder",-104873083),"your name",new cljs.core.Keyword(null,"on-key-press","on-key-press",-399563677),(function (p1__24560_SHARP_){
+if(cljs.core.truth_((function (){var and__16854__auto__ = phogame.core.is_enter_QMARK_.call(null,p1__24560_SHARP_);
+if(cljs.core.truth_(and__16854__auto__)){
+return (cljs.core.count.call(null,phogame.core.get_val.call(null,p1__24560_SHARP_)) > (0));
 } else {
-return and__16840__auto__;
+return and__16854__auto__;
 }
 })())){
 phogame.core.hide_intro.call(null);
 
-phogame.core.update_game.call(null,new cljs.core.Keyword(null,"user-name","user-name",1302913545),phogame.core.get_val.call(null,p1__21521_SHARP_));
+phogame.core.update_game.call(null,new cljs.core.Keyword(null,"user-name","user-name",1302913545),phogame.core.get_val.call(null,p1__24560_SHARP_));
 
 return phogame.core.show_game.call(null);
 } else {
@@ -212,4 +212,4 @@ if(typeof phogame.core.start !== 'undefined'){
 phogame.core.start = phogame.core.init.call(null);
 }
 
-//# sourceMappingURL=core.js.map?rel=1454177975012
+//# sourceMappingURL=core.js.map?rel=1455734075497
